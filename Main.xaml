@@ -180,7 +180,7 @@
               <InArgument x:TypeArguments="w:WatermarkSystem" x:Key="in_RecordData">[RecordData]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_ContentFilePath">[ContentFilePath]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_WatermarkFilePath">[WatermarkFilePath]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_MethodName">["watermark_"+ RecordData.ContentType.ToLower]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_MethodName">["watermark_"+ RecordData.ContentType]</InArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_WatermarkedContentFilePath">[WatermarkedContentFilePath]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>

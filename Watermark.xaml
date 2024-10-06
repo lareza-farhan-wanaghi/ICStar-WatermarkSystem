@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1270.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1447.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Watermark_Image_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -110,7 +110,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Watermark_Image" sap:VirtualizedContainerService.HintSize="636.6666666666666,1206" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Watermark_Image" sap:VirtualizedContainerService.HintSize="636.6666666666666,1382.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p:PythonObject" Name="PythonScript" />
       <Variable x:TypeArguments="p:PythonObject" Name="PythonMethod" />
@@ -122,20 +122,21 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="574.6666666666666,1118" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\divar\AppData\Local\Programs\Python\Python312\python312.dll" Path="C:\Users\divar\AppData\Local\Programs\Python\Python312" TargetPlatform="x64" Version="Python &gt;=3.10">
+    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="574.6666666666666,1294.6666666666667" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\divar\AppData\Local\Programs\Python\Python312\python312.dll" Path="C:\Users\divar\AppData\Local\Programs\Python\Python312" TargetPlatform="x64" Version="Python &gt;=3.10">
       <p:PythonScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540.6666666666666,1058" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540.6666666666666,1234.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="478.6666666666667,92" sap2010:WorkflowViewState.IdRef="LoadScript_1" Result="[PythonScript]" ScriptFile="[Path.Combine(Environment.CurrentDirectory, &quot;Script&quot;, &quot;main.py&quot;)]" />
-            <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="478.6666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" Instance="[PythonScript]" Name="[in_MethodName]" Parameters="[New Object() {in_ContentFilePath, in_WatermarkFilePath, in_RecordData.WatermarkText, in_RecordData.WatermarkTextFont, in_RecordData.WatermarkTextColor, in_RecordData.WatermarkPosition, in_RecordData.WatermarkOpacity, in_RecordData.OutputFormat, in_RecordData.EnhanceQuality}]" Result="[PythonMethod]" />
+            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="478.6666666666667,92" sap2010:WorkflowViewState.IdRef="LoadScript_1" Result="[PythonScript]" ScriptFile="[Path.Combine(Environment.CurrentDirectory, &quot;Scripts&quot;, &quot;main.py&quot;)]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_MethodName]" />
+            <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="478.6666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" Instance="[PythonScript]" Name="[in_MethodName]" Parameters="[New Object() {in_ContentFilePath, in_WatermarkFilePath, in_RecordData.WatermarkText, in_RecordData.WatermarkTextFont, in_RecordData.WatermarkTextColor, in_RecordData.WatermarkPosition, in_RecordData.WatermarkOpacity, in_RecordData.OutputFormat, in_RecordData.EnhanceQuality, &quot;&quot;}]" Result="[PythonMethod]" />
             <p:GetObject x:TypeArguments="x:Object" DisplayName="Get Python Object" sap:VirtualizedContainerService.HintSize="478.6666666666667,114" sap2010:WorkflowViewState.IdRef="GetObject`1_1" PythonObject="[PythonMethod]" Result="[PythonResult]" />
             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.6666666666667,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
