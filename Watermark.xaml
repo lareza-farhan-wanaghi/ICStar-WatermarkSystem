@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Watermark_Image" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:w="clr-namespace:Watermark_System;assembly=DataService.Watermark_System" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Watermark_Image" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:w="clr-namespace:Watermark_System;assembly=DataService.Watermark_System" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_RecordData" Type="InArgument(w:WatermarkSystem)" />
     <x:Property Name="in_ContentFilePath" Type="InArgument(x:String)" />
@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1447.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1385.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Watermark_Image_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,8 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -110,57 +112,61 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Watermark_Image" sap:VirtualizedContainerService.HintSize="636.6666666666666,1382.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Watermark_Image" sap:VirtualizedContainerService.HintSize="608,1320.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p:PythonObject" Name="PythonScript" />
       <Variable x:TypeArguments="p:PythonObject" Name="PythonMethod" />
-      <Variable x:TypeArguments="x:Object" Name="PythonResult" />
-      <Variable x:TypeArguments="x:String" Name="ErrorMessage" />
+      <Variable x:TypeArguments="s:String[]" Name="PythonResult" />
+      <Variable x:TypeArguments="scg:List(x:Object)" Name="PythonMethodArguments">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:List(x:Object)" ExpressionText="new List(of Object)" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="574.6666666666666,1294.6666666666667" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\divar\AppData\Local\Programs\Python\Python312\python312.dll" Path="C:\Users\divar\AppData\Local\Programs\Python\Python312" TargetPlatform="x64" Version="Python &gt;=3.10">
+    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="546,1232.6666666666667" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\divar\AppData\Local\Programs\Python\Python312\python312.dll" Path="C:\Users\divar\AppData\Local\Programs\Python\Python312" TargetPlatform="x64" Version="Python &gt;=3.10" WorkingFolder="C:\Users\divar\OneDrive\Documents\UiPath\ICStar Group 20 - Watermark System\Watermark System\Scripts">
       <p:PythonScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540.6666666666666,1234.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="512,1172.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="478.6666666666667,92" sap2010:WorkflowViewState.IdRef="LoadScript_1" Result="[PythonScript]" ScriptFile="[Path.Combine(Environment.CurrentDirectory, &quot;Scripts&quot;, &quot;main.py&quot;)]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_MethodName]" />
-            <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="478.6666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" Instance="[PythonScript]" Name="[in_MethodName]" Parameters="[New Object() {in_ContentFilePath, in_WatermarkFilePath, in_RecordData.WatermarkText, in_RecordData.WatermarkTextFont, in_RecordData.WatermarkTextColor, in_RecordData.WatermarkPosition, in_RecordData.WatermarkOpacity, in_RecordData.OutputFormat, in_RecordData.EnhanceQuality, &quot;&quot;}]" Result="[PythonMethod]" />
-            <p:GetObject x:TypeArguments="x:Object" DisplayName="Get Python Object" sap:VirtualizedContainerService.HintSize="478.6666666666667,114" sap2010:WorkflowViewState.IdRef="GetObject`1_1" PythonObject="[PythonMethod]" Result="[PythonResult]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.6666666666667,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-              <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[out_watermarkedContentFilePath]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[CType(PythonResult, Object())(0).ToString]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[CType(PythonResult, Object())(1).ToString]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
+            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="LoadScript_1" Result="[PythonScript]" ScriptFile="[Path.Combine(Environment.CurrentDirectory, &quot;Scripts&quot;, &quot;main.py&quot;)]" />
+            <uasc:AppendItemToCollection x:TypeArguments="x:Object" Collection="[PythonMethodArguments]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="450,177.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1">
+              <uasc:AppendItemToCollection.Items>
+                <scg:List x:TypeArguments="InArgument(x:Object)" Capacity="16">
+                  <InArgument x:TypeArguments="x:Object">[in_ContentFilePath]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[in_WatermarkFilePath]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[if(String.IsNullOrEmpty(in_RecordData.WatermarkText), "", in_RecordData.WatermarkText)]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[if(String.IsNullOrEmpty(in_RecordData.WatermarkTextFont), "", in_RecordData.WatermarkTextFont)]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[if(String.IsNullOrEmpty(in_RecordData.WatermarkTextColor), "", in_RecordData.WatermarkTextColor)]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[in_RecordData.WatermarkPosition]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[in_RecordData.WatermarkOpacity]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[in_RecordData.OutputFormat]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">["in_RecordData.EnhanceQuality.ToString"]</InArgument>
                 </scg:List>
-              </ui:MultipleAssign.AssignOperations>
-            </ui:MultipleAssign>
-            <If Condition="[not String.IsNullOrEmpty(ErrorMessage)]" sap:VirtualizedContainerService.HintSize="478.6666666666667,470" sap2010:WorkflowViewState.IdRef="If_1">
+              </uasc:AppendItemToCollection.Items>
+            </uasc:AppendItemToCollection>
+            <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" Instance="[PythonScript]" Name="[in_MethodName]" Parameters="[PythonMethodArguments]" Result="[PythonMethod]" />
+            <p:GetObject x:TypeArguments="s:String[]" DisplayName="Get Python Object" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="GetObject`1_2" PythonObject="[PythonMethod]" Result="[PythonResult]" />
+            <Assign sap:VirtualizedContainerService.HintSize="450,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_WatermarkedContentFilePath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[PythonResult(0)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[not String.IsNullOrEmpty(PythonResult(1))]" sap:VirtualizedContainerService.HintSize="450,470" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,202.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -168,7 +174,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new Exception(&quot;Error while watermarking: &quot;+ ErrorMessage)]" sap:VirtualizedContainerService.HintSize="354,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <Throw Exception="[new Exception(&quot;Error while watermarking: &quot;+ PythonResult(1))]" sap:VirtualizedContainerService.HintSize="354,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
