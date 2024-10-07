@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>883.3333333333334,449.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1249.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Download_Record_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -103,15 +103,20 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Record_Data" sap:VirtualizedContainerService.HintSize="416,308" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Record_Data" sap:VirtualizedContainerService.HintSize="592,1184.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uda:GetEntityRecordById x:TypeArguments="w:WatermarkSystem" ContinueOnError="False" DisplayName="Get Entity Record By Id" EntityId="62599e54-4982-ef11-bdfd-000d3ab50a30" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetEntityRecordById`1_1" OutputEntity="[out_RecordData]" RecordId="[in_RecordId]" TimeoutInMs="30000">
+    <uda:GetEntityRecordById x:TypeArguments="w:WatermarkSystem" ContinueOnError="False" DisplayName="Get Entity Record By Id" EntityId="62599e54-4982-ef11-bdfd-000d3ab50a30" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="530,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetEntityRecordById`1_1" OutputEntity="[out_RecordData]" RecordId="[in_RecordId]" TimeoutInMs="30000">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -119,32 +124,32 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uda:GetEntityRecordById>
-    <Assign sap:VirtualizedContainerService.HintSize="354,57.333333333333336" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="530,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_ContentFilePath]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["ContentFile" + out_RecordData.Id.ToString + out_RecordData.ContentFile.Name]</InArgument>
+        <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(Environment.CurrentDirectory, "ContentFile" + out_RecordData.Id.ToString + out_RecordData.ContentFile.Name)]</InArgument>
       </Assign.Value>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <uda:DownloadFileFromRecordField x:TypeArguments="w:WatermarkSystem" DownloadedFileResource="{x:Null}" ContinueOnError="False" DisplayName="Download Content File" EntityId="62599e54-4982-ef11-bdfd-000d3ab50a30" Field="ContentFile" FilePath="[out_ContentFilePath]" sap:VirtualizedContainerService.HintSize="354,57.333333333333336" sap2010:WorkflowViewState.IdRef="DownloadFileFromRecordField`1_1" RecordId="[out_RecordData.Id]" TimeoutInMs="30000">
+    <uda:DownloadFileFromRecordField x:TypeArguments="w:WatermarkSystem" DownloadedFileResource="{x:Null}" ContinueOnError="False" DisplayName="Download Content File" EntityId="62599e54-4982-ef11-bdfd-000d3ab50a30" Field="ContentFile" FilePath="[out_ContentFilePath]" sap:VirtualizedContainerService.HintSize="530,229.33333333333334" sap2010:WorkflowViewState.IdRef="DownloadFileFromRecordField`1_1" RecordId="[out_RecordData.Id]" TimeoutInMs="30000">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uda:DownloadFileFromRecordField>
-    <If Condition="[not out_RecordData.WatermarkFile is nothing]" DisplayName="Downalod Watermarked File" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not out_RecordData.WatermarkFile is nothing]" DisplayName="Downalod Watermarked File" sap:VirtualizedContainerService.HintSize="530,692.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -160,7 +165,7 @@
               <OutArgument x:TypeArguments="x:String">[out_WatermarkFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["WatermarkFile" + out_RecordData.Id.ToString + out_RecordData.WatermarkFile.Name]</InArgument>
+              <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(Environment.CurrentDirectory,"WatermarkFile" + out_RecordData.Id.ToString + out_RecordData.WatermarkFile.Name)]</InArgument>
             </Assign.Value>
           </Assign>
           <uda:DownloadFileFromRecordField x:TypeArguments="w:WatermarkSystem" DownloadedFileResource="{x:Null}" ContinueOnError="False" DisplayName="Download File from Record Field" EntityId="62599e54-4982-ef11-bdfd-000d3ab50a30" Field="WatermarkFile" FilePath="[out_WatermarkFilePath]" sap:VirtualizedContainerService.HintSize="434,220" sap2010:WorkflowViewState.IdRef="DownloadFileFromRecordField`1_2" RecordId="[out_RecordData.Id]" TimeoutInMs="30000" />

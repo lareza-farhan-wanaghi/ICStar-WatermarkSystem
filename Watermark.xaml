@@ -152,7 +152,7 @@
                   <InArgument x:TypeArguments="x:Object">[in_RecordData.WatermarkPosition]</InArgument>
                   <InArgument x:TypeArguments="x:Object">[in_RecordData.WatermarkOpacity]</InArgument>
                   <InArgument x:TypeArguments="x:Object">[in_RecordData.OutputFormat]</InArgument>
-                  <InArgument x:TypeArguments="x:Object">["in_RecordData.EnhanceQuality.ToString"]</InArgument>
+                  <InArgument x:TypeArguments="x:Object">[in_RecordData.EnhanceQuality]</InArgument>
                 </scg:List>
               </uasc:AppendItemToCollection.Items>
             </uasc:AppendItemToCollection>
